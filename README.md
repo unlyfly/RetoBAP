@@ -29,7 +29,7 @@ Ejemplo de json para registro de una nueva tarea:
 {
 	"titulo": "Suministro de papel para impresion",
 	"descripcion": "Solicitud de compra resmas de papel para impresora",
-  "completado": False,
+  "completado": false,
 	"fechaEntrega": "2023-05-01",
 	"comentarios": "Se realizo la compra de papel, sin embargo se olvido solicitar rollo de papel para el plotter",
 	"responsable": "Aylin Ramos",
