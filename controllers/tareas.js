@@ -10,6 +10,17 @@ module.exports = {
             res.json({tareas: tareaItems, pendientes: tareasPendientes})
         }catch(err){
             console.log(err)
+            res.json(err)
+        }
+    },
+    getTarea: async (req,res)=>{
+        try{
+            //Tomamos una tarea por id
+            const tareaItem = await Tarea.findById(req.params.id)
+            res.json(tareaItem)
+        }catch(err){
+            console.log(err)
+            res.json(err)
         }
     },
     createTarea: async (req, res)=>{
@@ -19,38 +30,27 @@ module.exports = {
             res.json(nuevaTarea)
         }catch(err){
             console.log(err)
+            res.json(err)
         }
     },
-    // markComplete: async (req, res)=>{
-    //     try{
-    //         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-    //             completed: true
-    //         })
-    //         console.log('Marked Complete')
-    //         res.json('Marked Complete')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
-    // markIncomplete: async (req, res)=>{
-    //     try{
-    //         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-    //             completed: false
-    //         })
-    //         console.log('Marked Incomplete')
-    //         res.json('Marked Incomplete')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
-    // deleteTodo: async (req, res)=>{
-    //     console.log(req.body.todoIdFromJSFile)
-    //     try{
-    //         await Todo.findOneAndDelete({_id:req.body.todoIdFromJSFile})
-    //         console.log('Deleted Todo')
-    //         res.json('Deleted It')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // }
+    updateTarea: async (req, res)=>{
+        try{
+            const tarea = await Tarea.findOneAndUpdate({_id:req.params.id}, req.body, {new:true})
+            console.log('Modificacion Completada!')
+            res.json(tarea)
+        }catch(err){
+            console.log(err)
+            res.json(err)
+        }
+    },
+    deleteTarea: async (req, res)=>{
+        try{
+            await Tarea.findOneAndDelete({_id:req.params.id})
+            console.log(`Tarea ${req.params.id} borrada!`)
+            res.json(`Tarea ${req.params.id} borrada!`)
+        }catch(err){
+            console.log(err)
+            res.json(err)
+        }
+    }
 }    

@@ -4,12 +4,12 @@ const tareasController = require('../controllers/tareas')
 
 router.get('/', tareasController.getTareas)
 
+router.get('/:id', tareasController.getTarea)
+
 router.post('/', tareasController.createTarea)
 
-// router.put('/markComplete', todosController.markComplete)
+router.put('/:id', tareasController.updateTarea)
 
-// router.put('/markIncomplete', todosController.markIncomplete)
-
-// router.delete('/deleteTodo', todosController.deleteTodo)
+router.delete('/:id', tareasController.deleteTarea)
 
 module.exports = router
