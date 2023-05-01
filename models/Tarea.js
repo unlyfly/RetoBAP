@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
+// Importa Mongoose
+const mongoose = require("mongoose");
 
+// Define un nuevo esquema de Mongoose llamado TareaSchema
 const TareaSchema = new mongoose.Schema({
   titulo: {
     type: String,
@@ -23,15 +25,16 @@ const TareaSchema = new mongoose.Schema({
   },
   responsable: {
     type: String,
-    default: 'Por definir',
+    default: "Por definir",
   },
   tags: {
     type: Array,
   },
   autor: {
     type: String,
-    default: 'anonimo',
-  }
-})
+    default: "anonimo",
+  },
+});
 
-module.exports = mongoose.model('Tarea', TareaSchema)
+// Exporta el esquema de Mongoose TareaSchema como un modelo llamado 'Tarea'
+module.exports = mongoose.model("Tarea", TareaSchema);
